@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon --exec babel-node ./server/app.js",
-    "build": "NODE_ENV=production babel server -d dist && webpack --progress --config ./webpack.config.prod.js",
-    "start": "npm run build && node dist/app.js",
     "server:test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha --timeout 60000 --compilers js:babel-register server/test --exit",
     "client:test": "jest --coverage",
+    "build": "NODE_ENV=production babel server -d dist && webpack --progress --config ./webpack.config.prod.js",
+    "heroku-postbuild": "NODE_ENV=production && npm run build",
+    "start": "node dist/app.js",
     "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls",
     "test": "npm run client:test && npm run server:test"
   },
