@@ -1,0 +1,84 @@
+{
+  "name": "phone-number-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon --exec babel-node ./server/app.js",
+    "build": "NODE_ENV=production babel server -d dist && webpack --progress --config ./webpack.config.prod.js",
+    "start": "npm run build && node dist/app.js",
+    "server:test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha --timeout 60000 --compilers js:babel-register server/test --exit",
+    "client:test": "jest --coverage",
+    "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls",
+    "test": "npm run client:test && npm run server:test"
+  },
+  "author": "Ruqoyah",
+  "license": "ISC",
+  "nyc": {
+    "exclude": [
+      "server/test/**.js"
+    ]
+  },
+  "jest": {
+    "testMatch": [
+      "<rootDir>/client/test/**/*.test.js?(x)"
+    ],
+    "verbose": true,
+    "collectCoverage": true
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "body-parser": "^1.18.3",
+    "browserify-fs": "^1.0.0",
+    "coveralls": "^3.0.2",
+    "cross-env": "^5.2.0",
+    "css-loader": "^0.28.11",
+    "dotenv": "^6.2.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "expect": "^23.6.0",
+    "express": "^4.16.4",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "fs": "0.0.1-security",
+    "fs-extra": "^6.0.1",
+    "jest": "^23.6.0",
+    "mocha": "^5.2.0",
+    "moxios": "^0.4.0",
+    "node-sass": "^4.11.0",
+    "nyc": "^13.1.0",
+    "path": "^0.12.7",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-router-dom": "^4.2.2",
+    "sass-loader": "^7.0.1",
+    "sinon": "^7.2.2",
+    "style-loader": "^0.21.0",
+    "supertest": "^3.3.0",
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "webpack": "^4.20.2",
+    "webpack-dev-middleware": "^3.4.0",
+    "webpack-merge": "^4.1.5",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "codeclimate-test-reporter": "^0.5.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-react": "^7.7.0",
+    "nodemon": "^1.17.3",
+    "webpack-cli": "^3.1.1"
+  }
+}

@@ -1,0 +1,46 @@
+$primary-font: 'Comfortaa';
+
+.homepage-wrapper {
+  background-image: url(/images/background.jpg);
+  position: absolute;
+  width:100%;
+  height:100%;
+  background-size: cover;
+  text-align: center;
+}
+
+.homepage-content {
+  padding: 15% 10%;
+
+  h1 {
+    font-family: $primary-font; 
+    color:  #fff;
+    font-weight: 800;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+.table-wrapper {
+  padding: 2% 10%;
+}
+
+.fa {
+  margin-left: 2%;
+  cursor: pointer;
+}
+
+.table thead th {
+  background-color: #2157b8;
+  color: #fff;
+}
+
+.nav-custom {
+  padding-left: 10%;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgb(0, 0, 0);
+}
