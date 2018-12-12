@@ -29,5 +29,18 @@ describe('Number generator: ', () => {
         done();
       });
   });
+
+  it('gets all in client index.html', (done) => {
+    supertest(app)
+      .get('/*')
+      .expect(200)
+      .end((err, res) => {
+        if (err) {
+          return done(err);
+        }
+        expect(res.body);
+        done();
+      });
+  });
 });
 
