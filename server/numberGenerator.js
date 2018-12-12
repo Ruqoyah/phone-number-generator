@@ -19,7 +19,14 @@ export const numberGenerator = async (req, res) => {
     })
 
     const phoneNumbers = []
-    let phoneNumber = parseInt(lastNumber.phoneNumber.replace(/-/gi, ""), 10) || 911000000
+
+    let phoneNumber
+    if(!lastNumber) {
+      phoneNumber = 911000000
+    } else {
+      phoneNumber = parseInt(lastNumber.phoneNumber.replace(/-/gi, ""), 10)
+    }
+
     for (let x = 0; x < 10; x++) {
       phoneNumber++
       const number = "0".concat(phoneNumber)

@@ -13,23 +13,21 @@ describe('Number generator actions', () => {
   afterEach(() => moxios.uninstall());
 
   describe('get phone numberes', () => {
-    it('gets all phone numbers action',
-      async (done) => {
-        const { getNumbers } = mockData;
-        moxios.stubRequest('/api/phonenumbers', {
-          status: 200,
-          response: getNumbers
-        });
-        await getPhoneNumbers()
-          .then(() => {
-            expect(getNumbers.length).toEqual(4)
-          });
-        done();
+    it('gets all phone numbers action', async (done) => {
+      const { getNumbers } = mockData;
+      moxios.stubRequest('/api/phonenumbers', {
+        status: 200,
+        response: getNumbers
       });
+      await getPhoneNumbers()
+        .then(() => {
+          expect(getNumbers.length).toEqual(4)
+        });
+      done();
+    });
   });
 
-  it('generates numbers',
-  async (done) => {
+  it('generates numbers', async (done) => {
     const { message } = mockData;
     moxios.stubRequest('/api/numbers', {
       status: 200,

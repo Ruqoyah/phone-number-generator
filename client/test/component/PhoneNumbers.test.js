@@ -9,7 +9,7 @@ import mockData from '../mockData'
 configure({ adapter: new Adapter() });
 
 const setup = () => {
-  return shallow(<PhoneNumbers/>);
+  return shallow(<PhoneNumbers />);
 };
 
 
@@ -17,11 +17,12 @@ describe('component: PhoneNumbers', () => {
   describe('PhoneNumbers component', () => {
     it('tests that the component successfully rendered', () => {
       const wrapper = setup();
+      wrapper.setState({ phoneNumbers: mockData.getNumbers });
       expect(wrapper.find('div').length).toBe(2);
       expect(wrapper.find('table').length).toBe(1);
       expect(wrapper.find('thead').length).toBe(1);
       expect(wrapper.find('tbody').length).toBe(1);
-      expect(wrapper.find('tr').length).toBe(1);
+      expect(wrapper.find('tr').length).toBe(5);
       expect(wrapper.find('th').length).toBe(2);
     });
   });
@@ -35,16 +36,36 @@ describe('component: PhoneNumbers', () => {
   });
 
   describe('dateSort()', () => {
-    it('should sort date', () => {
-      const wrapper = shallow(<PhoneNumbers />);
+    it('should sort in descending order', () => {
+      const wrapper = setup();
+      wrapper.setState({ phoneNumbers: mockData.getNumbers });
+      const button = wrapper.find('#date-sort');
+      button.simulate('click');
+    });
+  });
+
+  describe('dateSort()', () => {
+    it('should sort in ascending order', () => {
+      const wrapper = setup();
+      wrapper.setState({ phoneNumbers: mockData.getNumbers, dateSort: 'fa fa-sort-alpha-desc' });
       const button = wrapper.find('#date-sort');
       button.simulate('click');
     });
   });
 
   describe('numberSort()', () => {
-    it('should sort numbers', () => {
-      const wrapper = shallow(<PhoneNumbers />);
+    it('should sort max numbers', () => {
+      const wrapper = setup();
+      wrapper.setState({ phoneNumbers: mockData.getNumbers });
+      const button = wrapper.find('#number-sort');
+      button.simulate('click');
+    });
+  });
+
+  describe('numberSort()', () => {
+    it('should sort min numbers', () => {
+      const wrapper = setup();
+      wrapper.setState({ phoneNumbers: mockData.getNumbers, numberSort: 'fa fa-sort-numeric-desc' });
       const button = wrapper.find('#number-sort');
       button.simulate('click');
     });

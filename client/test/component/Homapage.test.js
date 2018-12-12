@@ -3,11 +3,13 @@ import Adapter from 'enzyme-adapter-react-16';
 import expect from 'expect';
 import { configure, shallow } from 'enzyme';
 import Homepage from '../../components/Homepage';
+import sinon from 'sinon';
+import mockData from '../mockData';
 
 configure({ adapter: new Adapter() });
 
 const setup = () => {
-  return shallow(<Homepage />);
+  return shallow(<Homepage/>);
 };
 
 
@@ -28,9 +30,17 @@ describe('component: Homepage', () => {
   
   describe('numberGenerator()', () => {
     it('should generate phone numbers', () => {
-      const wrapper = shallow(<Homepage />);
+      const wrapper = setup();
       const button = wrapper.find('#generate');
       button.simulate('click');
+    });
+  });
+
+  describe('numberGenerator()', () => {
+    it('should call numberGenerator()', () => {
+      const spy = sinon.spy(Homepage.prototype, 'numberGenerator');
+      shallow(<Homepage numberGenerator={spy}/>)
+        .instance().numberGenerator(mockData.getNumbers);
     });
   });
 });

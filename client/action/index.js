@@ -9,18 +9,16 @@ export const generateNumbers = () =>
     .then((response) => {
       return response.data.message
     })
-    .catch(error => Promise.reject(error.response.data.message));
 
 /**
  * @description Get phone numbers
  *
  */
 export const getPhoneNumbers = () => 
-axios.get('/api/phonenumbers')
-  .then((response) => {
-    return response.data
-  })
-  .catch(error => Promise.reject(error.response.data.message));
+  axios.get('/api/phonenumbers')
+    .then((response) => {
+      return response.data
+    })
 
 
 export default generateNumbers;

@@ -2,13 +2,32 @@ import React, { Component } from 'react';
 import Header from './Header';
 import { generateNumbers } from '../action'
 
+/**
+ * @class Homepage
+ *
+ * @classdesc Generate phone numbers
+ *
+ */
 class Homepage extends Component {
+    /**
+   * constructor - contains the constructor
+   *
+   * @param  {object} props the properties of the class component
+   *
+   * @return {void} no return or void
+   *
+   */
   constructor(props) {
     super(props);
     this.state = {}
     this.numberGenerator = this.numberGenerator.bind(this);
   }
 
+  /**
+   * @description - generate numbers
+   *
+   * @return {void} no return or void
+   */
   numberGenerator() {
     generateNumbers().then((message) => {
       toastr.options = {
@@ -23,6 +42,12 @@ class Homepage extends Component {
     })
   }
 
+  /**
+   * @description render - renders the class component
+   *
+   * @return {object} returns an object
+   *
+   */
   render() {
     return (
       <div>
