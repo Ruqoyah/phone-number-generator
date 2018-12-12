@@ -5,8 +5,7 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/4a2bac49c037bbcf1bab/test_coverage)](https://codeclimate.com/github/Ruqoyah/phone-number-generator/test_coverage) - Client Test Coverage
 
-## Hosted Application URL
-https://phone-numbers-generator.herokuapp.com/
+## Hosted Application URL - https://phone-numbers-generator.herokuapp.com/
 
 ## Technologies Used
 * NodeJS
